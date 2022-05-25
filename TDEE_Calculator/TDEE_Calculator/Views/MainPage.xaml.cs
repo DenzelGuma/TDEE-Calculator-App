@@ -4,15 +4,20 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
+using TDEE_Calculator.ViewModels;
 using Xamarin.Forms;
 
-namespace TDEE_Calculator
+namespace TDEE_Calculator.Views
 {
     public partial class MainPage : ContentPage
     {
         public MainPage()
         {
             InitializeComponent();
+            BindingContext = IocProvider.ServiceProvider.GetService<MainPageViewModel>();
         }
+
+      
     }
 }

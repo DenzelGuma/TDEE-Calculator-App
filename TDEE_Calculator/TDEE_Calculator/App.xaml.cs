@@ -1,4 +1,8 @@
 ﻿using System;
+
+using TDEE_Calculator.Navigation;
+using TDEE_Calculator.Views;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -9,8 +13,9 @@ namespace TDEE_Calculator
         public App()
         {
             InitializeComponent();
-
-            MainPage = new MainPage();
+            IocProvider.Init();
+            MainPage = new NavigationPage(new MainPage());
+            NavigationDispatcher.Instance.Initialize(MainPage.Navigation);
         }
 
         protected override void OnStart()

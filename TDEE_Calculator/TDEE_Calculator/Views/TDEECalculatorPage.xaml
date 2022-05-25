@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TDEE_Calculator.Views.TDEECalculatorPage"
+             xmlns:viewModels="clr-namespace:TDEE_Calculator.ViewModels"
+             >
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+         
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.BindingContext>
+        <viewModels:TDEECalculatorPageViewModel/>
+    </ContentPage.BindingContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"></RowDefinition>
+            <RowDefinition Height="0.7*"></RowDefinition>
+            <RowDefinition Height="0.3*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackLayout  Grid.Row="0">
+            <Label Text="Welcome to the TDEE Calculator app " HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"></Label>
+        </StackLayout>
+        
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Margin="0,50,0,0"  Grid.Row="1">
+
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                <Label Text="Please specify your Gender"></Label>
+                <StackLayout Orientation="Horizontal">
+                    <Entry  Text="{Binding Gender, Mode=TwoWay}" WidthRequest="150" Placeholder="Gender"></Entry>
+                    <Label VerticalTextAlignment="Center" Text="M/F"></Label>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                <Label Text="Please specify your Age"></Label>
+                <StackLayout Orientation="Horizontal">
+                    <Entry  Text="{Binding Age, Mode=TwoWay}" WidthRequest="110" Placeholder="Age"></Entry>
+                    <Label VerticalTextAlignment="Center" Text="Years Old"></Label>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                <Label Text="Please specify your Height"></Label>
+                <StackLayout Orientation="Horizontal">
+                    <Entry  Text="{Binding Height, Mode=TwoWay}" WidthRequest="150" Placeholder="Height"></Entry>
+                    <Label VerticalTextAlignment="Center" Text="Cm"></Label>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                <Label Text="Please specify your Weight"></Label>
+                <StackLayout Orientation="Horizontal">
+                    <Entry Text="{Binding Weight, Mode=TwoWay}" WidthRequest="150" Placeholder="Weight"></Entry>
+                    <Label VerticalTextAlignment="Center" Text="Kg"></Label>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                <Label Text="Please specify your Exercise Total"></Label>
+                <StackLayout Orientation="Horizontal">
+                    <Entry  Text="{Binding ActivityPW, Mode=TwoWay}" WidthRequest="140" Placeholder="ActivityPW"></Entry>
+                    <Label VerticalTextAlignment="Center" Text="Per/Week"></Label>
+                </StackLayout>
+            </StackLayout>
+
+            <Button Text="Calculate TDEE" Command="{Binding CalculateTDEECommand}"></Button>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Your Total Daily Energy Expenditure is:"></Label>
+                <Label Text="{Binding Tdee, Mode=TwoWay}"></Label>
+                <Label Text="Calories"></Label>
+            </StackLayout>
+
+            
+        </StackLayout>
+        
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  Grid.Row="2">
+
+            <Button Text="Navigate to x page" Command="{Binding NavigateToNextPageCommand}"></Button>
+
+        </StackLayout>
+
+    </Grid>
+</ContentPage>

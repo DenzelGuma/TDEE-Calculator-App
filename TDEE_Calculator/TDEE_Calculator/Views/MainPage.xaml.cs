@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
+﻿using TDEE_Calculator.Models;
+using TDEE_Calculator.Services;
 using TDEE_Calculator.ViewModels;
 using Xamarin.Forms;
 
@@ -12,12 +7,12 @@ namespace TDEE_Calculator.Views
 {
     public partial class MainPage : ContentPage
     {
-        public MainPage()
+        public MainPage(IOAuth2Service oAuth2Service)
         {
             InitializeComponent();
-            BindingContext = IocProvider.ServiceProvider.GetService<MainPageViewModel>();
+            this.BindingContext = new MainPageViewModel(oAuth2Service);
         }
 
-      
+     
     }
 }

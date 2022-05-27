@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "726991808032",
+    "project_id": "tdeecalculatorclient",
+    "storage_bucket": "tdeecalculatorclient.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:726991808032:android:c2ea14b316e4f303e5be45",
+        "android_client_info": {
+          "package_name": "com.cov6002cem.tdee_calculator_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "726991808032-4kipshpjefcnv2lm1cmfcdoh84hrrb4p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cov6002cem.tdee_calculator_app",
+            "certificate_hash": "f57e8938a124636cba92909e9b4f24eb9cb8dc06"
+          }
+        },
+        {
+          "client_id": "726991808032-s46pi97dcpitq43tddc9r5jks93bfp4r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUL0kC4V0lITgjHwSt3Iron8zwdov4bqE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "726991808032-s46pi97dcpitq43tddc9r5jks93bfp4r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

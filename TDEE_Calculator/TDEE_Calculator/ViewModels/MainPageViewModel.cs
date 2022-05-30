@@ -9,6 +9,7 @@ using Plugin.GoogleClient;
 using Plugin.GoogleClient.Shared;
 using Refit;
 using TDEE_Calculator.Navigation;
+using TDEE_Calculator.Interfaces;
 using TDEE_Calculator.Models;
 using TDEE_Calculator.Services;
 using TDEE_Calculator.Views;
@@ -76,7 +77,7 @@ namespace TDEE_Calculator.ViewModels
                                 Name = e.Data.Name,
                             };
                             
-                            await App.Current.MainPage.Navigation.PushModalAsync(new TDEECalculatorPage(socialLoginData));
+                            await App.Current.MainPage.Navigation.PushModalAsync(new TDEECalculatorPage());
                             break;
                         case GoogleActionStatus.Canceled:
                             await App.Current.MainPage.DisplayAlert("Google Auth", "Canceled", "Ok");
@@ -102,5 +103,9 @@ namespace TDEE_Calculator.ViewModels
             }
         }
 
+        public override Task Initialise()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

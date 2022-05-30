@@ -1,8 +1,8 @@
 ﻿
 using System;
 
-//using TDEE_Calculator.Interfaces;
-//using TDEE_Calculator.Services;
+using TDEE_Calculator.Interfaces;
+using TDEE_Calculator.Services;
 using TDEE_Calculator.ViewModels;
 
 using Microsoft.Extensions.DependencyInjection;
@@ -13,7 +13,8 @@ namespace TDEE_Calculator
     {
         public static IServiceCollection ConfigureServices(this IServiceCollection services)
         {
-            //services.AddSingleton<xService, yService>();
+            services.AddSingleton<IDbService, DbService>();
+
 
             return services;
         }
@@ -29,7 +30,7 @@ namespace TDEE_Calculator
         {
             services.AddTransient<MainPageViewModel>();
             services.AddTransient<TDEECalculatorPageViewModel>();
-
+            
 
             return services;
         }

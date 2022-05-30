@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,11 +14,31 @@ namespace TDEE_Calculator.Views
 {
     public partial class TDEECalculatorPage : ContentPage
     {
-        public TDEECalculatorPage(NetworkAuthData networkAuthData)
+        public TDEECalculatorPage()
         {
-            BindingContext = networkAuthData;
             InitializeComponent();
+            BindingContext = IocProvider.ServiceProvider.GetService<TDEECalculatorPageViewModel>();
+            SubscribeToEvents();
+
         }
+
+        private void SubscribeToEvents()
+        {
+            Appearing += TDEECalculatorPage_Appearing;
+        }
+
+        private async void TDEECalculatorPage_Appearing(object sender, EventArgs e)
+        {
+            try
+            {
+                await (BindingContext as TDEECalculatorPageViewModel).Initialise();
+            }
+            catch (Exception error)
+            {
+                Debug.Fail(error.Message); //handle gracefully here
+            }
+        }
+
 
     }
 }

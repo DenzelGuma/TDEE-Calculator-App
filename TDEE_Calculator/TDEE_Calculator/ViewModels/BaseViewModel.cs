@@ -1,10 +1,11 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 
 namespace TDEE_Calculator.ViewModels
 {
-    public class BaseViewModel : INotifyPropertyChanged
+    public abstract class BaseViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -16,8 +17,6 @@ namespace TDEE_Calculator.ViewModels
             }
         }
 
-        public BaseViewModel()
-        {
-        }
+        public abstract Task Initialise();
     }
 }

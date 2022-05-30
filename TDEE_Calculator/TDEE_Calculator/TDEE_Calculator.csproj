@@ -22,10 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Update="Views\TDEECalculatorPage.xaml.cs">
       <DependentUpon>TDEECalculatorPage.xaml</DependentUpon>
     </Compile>

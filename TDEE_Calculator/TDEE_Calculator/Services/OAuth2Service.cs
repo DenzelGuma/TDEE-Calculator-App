@@ -1,49 +1,44 @@
 ﻿using System;
-using Plugin.CurrentActivity;
-using TDEE_Calculator.Services;
-using TDEE_Calculator.Interfaces;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Xamarin.Auth;
 
-namespace TDEE_Calculator.Droid.Services
+using TDEE_Calculator.Interfaces;
+using TDEE_Calculator.Models;
+
+
+namespace TDEE_Calculator.Services
 {
-    public class DroidOAuth2Authenticator : OAuth2Authenticator
+       
+    public class OAuth2Service : IOAuth2Service , IServiceOverridable
     {
-        public DroidOAuth2Authenticator(string clientId, string scope, Uri authorizeUrl, Uri redirectUrl) : base(clientId, scope, authorizeUrl, redirectUrl)
-        {
+        private string clientId;
+        private string scope;
+        private Uri authorizeUrl;
+        private Uri redirectUrl;
 
+        public OAuth2Service(string clientId, string scope, Uri authorizeUrl, Uri redirectUrl)
+        {
+            this.clientId = clientId;
+            this.scope = scope;
+            this.authorizeUrl = authorizeUrl;
+            this.redirectUrl = redirectUrl;
         }
 
-        protected override void OnPageEncountered(Uri url, System.Collections.Generic.IDictionary<string, string> query, System.Collections.Generic.IDictionary<string, string> fragment)
-        {
-            // Remove state from dictionaries. 
-            // We are ignoring request state forgery status 
-            // as we're hitting an ASP.NET service which forwards 
-            // to a third-party OAuth service itself
-            if (query.ContainsKey("state"))
-            {
-                query.Remove("state");
-            }
+        public bool AllowCancel { get; private set; }
+        public bool ShowErrors { get; private set; }
+        public EventHandler<AuthenticatorErrorEventArgs> Error { get; private set; }
+        public EventHandler<AuthenticatorCompletedEventArgs> Completed { get; private set; }
 
-            if (fragment.ContainsKey("state"))
-            {
-                fragment.Remove("state");
-            }
-
-            base.OnPageEncountered(url, query, fragment);
-        }
-    }
-
-    public class OAuth2Service : IOAuth2Service
-    {
         public event EventHandler<string> OnSuccess = delegate { };
         public event EventHandler OnCancel = delegate { };
         public event EventHandler<string> OnError = delegate { };
 
         public void Authenticate(string clientId, string scope, Uri authorizeUrl, Uri redirectUrl)
         {
-            var activity = CrossCurrentActivity.Current.Activity;
+            
 
-            var auth = new DroidOAuth2Authenticator(
+            var auth = new OAuth2Service(
                 clientId: clientId, // your OAuth2 client id
                 scope: scope, // the scopes for the particular API you're accessing, delimited by "+" symbols
                 authorizeUrl: authorizeUrl, // the auth URL for the service
@@ -65,9 +60,6 @@ namespace TDEE_Calculator.Droid.Services
 
             completedDelegate = (sender, eventArgs) => {
 
-                // UI presented, so it's up to us to dimiss it on Android
-                // dismiss Activity with WebView or CustomTabs
-                CrossCurrentActivity.Current.Activity.Finish();
 
                 if (eventArgs.IsAuthenticated)
                 {
@@ -89,7 +81,7 @@ namespace TDEE_Calculator.Droid.Services
             auth.Error += errorDelegate;
             auth.Completed += completedDelegate;
 
-            activity.StartActivity(auth.GetUI(activity));
+           
         }
 
     }

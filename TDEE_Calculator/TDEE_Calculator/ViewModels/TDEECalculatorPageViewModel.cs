@@ -15,6 +15,7 @@ namespace TDEE_Calculator.ViewModels
 {
     public class TDEECalculatorPageViewModel : BaseViewModel
     {
+        
         private string _gender;
         private int _age;
         private double _height;
@@ -24,6 +25,8 @@ namespace TDEE_Calculator.ViewModels
 
         public ObservableCollection<Tdee_stats> Stats { get; set; } = new ObservableCollection<Tdee_stats>();
         private readonly IDbService _dbService;
+
+        public String  LastUpdated { get { return DateTime.Now.ToString("dddd, dd MMMM yyyy HH: mm:ss"); } }
 
         public string Gender
         {
@@ -190,17 +193,20 @@ namespace TDEE_Calculator.ViewModels
             );
 
             
-            AddToDatabaseCommand = new Command(async () => await AddToDatabase(Gender,Age,Height,Weight,ActivityPW,Tdee));
+            AddToDatabaseCommand = new Command(async () => await AddToDatabase(LastUpdated,Gender,Age,Height,Weight,ActivityPW,Tdee));
+
+
             
         }
 
       
 
    
-        private async Task AddToDatabase(string gender,int age,double height, double weight , int activtyPW, int tdee)
+        private async Task AddToDatabase(string lastUpdated,string gender,int age,double height, double weight , int activtyPW, int tdee)
         {
             var newTdee_stats = new Tdee_stats
             {
+                LastUpdated = lastUpdated,
                 Gender = gender,
                 Age = age,
                 Height = height,
@@ -210,11 +216,17 @@ namespace TDEE_Calculator.ViewModels
 
             };
 
+            if (Tdee == 0 || Gender == null || Height ==0 || Weight ==0)
+            {
+                await Application.Current.MainPage.DisplayAlert("Adding to your Log", "Please Enter Valid Data and Calculate your TDEE Before Adding to your Log!", "Ok");
+                return;
+            }
+
             var addToDb = await _dbService.SaveStatsAsync(newTdee_stats);
 
             if (addToDb > 0)
             {
-                Stats.Add(newTdee_stats);
+                Stats.Insert(0,newTdee_stats);
             }
 
            
@@ -222,6 +234,8 @@ namespace TDEE_Calculator.ViewModels
             Age = 0;
             Height = 0;
             Weight = 0;
+            ActivityPW = 0;
+            Tdee = 0;
         }
 
         public override async Task Initialise()
@@ -231,7 +245,7 @@ namespace TDEE_Calculator.ViewModels
 
             if (currentStats.Count > 0)
             {
-                currentStats.ForEach(stat => Stats.Add(stat));
+                currentStats.ForEach(stat => Stats.Insert(0,stat));
             }
             else
             {

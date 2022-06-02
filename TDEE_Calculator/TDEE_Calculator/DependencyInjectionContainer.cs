@@ -14,6 +14,7 @@ namespace TDEE_Calculator
         public static IServiceCollection ConfigureServices(this IServiceCollection services)
         {
             services.AddSingleton<IDbService, DbService>();
+            services.AddSingleton<IOAuth2Service, OAuth2Service>();
 
 
             return services;

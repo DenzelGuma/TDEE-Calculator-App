@@ -5,16 +5,17 @@ using TDEE_Calculator.Views;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using TDEE_Calculator.Interfaces;
 
 namespace TDEE_Calculator
 {
     public partial class App : Application
     {
-        public App(IOAuth2Service oAuth2Service)
+        public App()
         {
             InitializeComponent();
             IocProvider.Init();
-            MainPage = new NavigationPage(new MainPage(oAuth2Service));
+            MainPage = new NavigationPage(new MainPage());
             NavigationDispatcher.Instance.Initialize(MainPage.Navigation);
         }
 

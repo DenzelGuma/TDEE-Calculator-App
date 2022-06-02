@@ -16,11 +16,13 @@
             <RowDefinition Height="0.01*"></RowDefinition>
             <RowDefinition Height="0.3*"></RowDefinition>
             <RowDefinition Height="0.05*"></RowDefinition>
-            <RowDefinition Height="0.115*"></RowDefinition>
+            <RowDefinition Height="0.135*"></RowDefinition>
         </Grid.RowDefinitions>
 
         <StackLayout  Grid.Row="0">
-            <Label Text="Welcome to the TDEE Calculator app " HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"></Label>
+            
+            <Image Source="TdeeIcon"/>
+            
         </StackLayout>
         
         <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Margin="0,50,0,0"  Grid.Row="1">
@@ -65,11 +67,12 @@
                 </StackLayout>
             </StackLayout>
 
-            <Button Text="Calculate TDEE" Command="{Binding CalculateTDEECommand}"></Button>
+            
             <StackLayout Orientation="Horizontal">
-                <Label Text="Your Total Daily Energy Expenditure is:"></Label>
-                <Label Text="{Binding Tdee, Mode=TwoWay}"></Label>
-                <Label Text="Calories"></Label>
+                <Button Text="Calculated TDEE = " Command="{Binding CalculateTDEECommand}" VerticalOptions="Start"></Button>
+                <Label Text="{Binding Tdee, Mode=TwoWay,StringFormat='{0} Calories ' }" TextColor="Black" VerticalOptions ="Center"></Label>
+                
+
             </StackLayout>
 
         </StackLayout>
@@ -79,13 +82,26 @@
             <Button Text="Add your TDEE stats to your personal log" Command="{Binding AddToDatabaseCommand}"></Button>
 
         </StackLayout>
-
+        
         <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  Grid.Row="3">
-            <Label Text="This is your personal TDEE log Swipe/Scroll below to view your history  " HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"></Label>
-            <CarouselView x:Name="carouselView" ItemsSource="{Binding Stats}">
-                <CarouselView.ItemTemplate>
+            <Label Text="Scroll down to view your TDEE log history:" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand" TextColor="Black"></Label>
+
+            <CollectionView x:Name="collectionView" ItemsSource="{Binding Stats}" EmptyView="No TDEE logs present">
+
+                <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical"
+                           ItemSpacing="20" />
+                </CollectionView.ItemsLayout>
+
+                
+                <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Log was Recorded on :"></Label>
+                                <Label Text="{Binding LastUpdated, Mode=TwoWay}"></Label>
+                            </StackLayout>
+
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Your Gender was :"></Label>
                                 <Label Text="{Binding Gender, Mode=TwoWay}"></Label>
@@ -123,8 +139,8 @@
 
                         </StackLayout>
                     </DataTemplate>
-                </CarouselView.ItemTemplate>
-            </CarouselView>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
         </StackLayout>
 

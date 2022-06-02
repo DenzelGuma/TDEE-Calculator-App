@@ -1,5 +1,5 @@
 ﻿using System;
-namespace TDEE_Calculator.Services
+namespace TDEE_Calculator.Interfaces
 {
     //Authentication Handler 
     public interface IOAuth2Service

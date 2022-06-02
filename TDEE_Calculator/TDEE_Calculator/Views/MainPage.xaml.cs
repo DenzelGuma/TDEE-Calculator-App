@@ -1,4 +1,6 @@
-﻿using TDEE_Calculator.Models;
+﻿using Microsoft.Extensions.DependencyInjection;
+using TDEE_Calculator.Interfaces;
+using TDEE_Calculator.Models;
 using TDEE_Calculator.Services;
 using TDEE_Calculator.ViewModels;
 using Xamarin.Forms;
@@ -7,10 +9,10 @@ namespace TDEE_Calculator.Views
 {
     public partial class MainPage : ContentPage
     {
-        public MainPage(IOAuth2Service oAuth2Service)
+        public MainPage()
         {
             InitializeComponent();
-            this.BindingContext = new MainPageViewModel(oAuth2Service);
+            BindingContext = IocProvider.ServiceProvider.GetService<MainPageViewModel>();
         }
 
      

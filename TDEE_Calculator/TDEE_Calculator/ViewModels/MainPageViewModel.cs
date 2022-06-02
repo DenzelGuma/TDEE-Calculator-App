@@ -19,7 +19,7 @@ namespace TDEE_Calculator.ViewModels
 {
     public class MainPageViewModel : BaseViewModel
     {
-        IGoogleClientManager _googleService = CrossGoogleClient.Current;
+        readonly IGoogleClientManager _googleService = CrossGoogleClient.Current;
         public ICommand OnLoginCommand { get; set; }
 
         IOAuth2Service _oAuth2Service;
@@ -37,15 +37,13 @@ namespace TDEE_Calculator.ViewModels
         };
 
 
-        public MainPageViewModel(IOAuth2Service oAuth2Service)
+        public MainPageViewModel()
         {
-            _oAuth2Service = oAuth2Service;
             OnLoginCommand = new Command<AuthNetwork>(async (data) => await LoginGoogleAsync(data));
-           
         }
         
         //Google Api Login call
-        async Task LoginGoogleAsync(AuthNetwork authNetwork)
+        public async Task LoginGoogleAsync(AuthNetwork authNetwork)
         {
             try
             {
@@ -107,5 +105,6 @@ namespace TDEE_Calculator.ViewModels
         {
             throw new NotImplementedException();
         }
+
     }
 }

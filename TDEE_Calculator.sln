@@ -7,9 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDEE_Calculator.Android", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDEE_Calculator.iOS", "TDEE_Calculator\TDEE_Calculator.iOS\TDEE_Calculator.iOS.csproj", "{9F492297-235D-4708-925A-735B58AA2853}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDEE_Calculator", "TDEE_Calculator\TDEE_Calculator\TDEE_Calculator.csproj", "{A213AD20-38D2-463B-9A26-1FE09F9F11AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TDEE_Calculator", "TDEE_Calculator\TDEE_Calculator\TDEE_Calculator.csproj", "{A213AD20-38D2-463B-9A26-1FE09F9F11AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{82D56F4C-5059-4365-B7C4-1B82933B419B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppTests", "UnitTests\AppTests.csproj", "{82D56F4C-5059-4365-B7C4-1B82933B419B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

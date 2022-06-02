@@ -39,6 +39,6 @@ namespace TDEE_Calculator.Views
             }
         }
 
-
+       
     }
 }

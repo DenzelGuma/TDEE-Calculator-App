@@ -1,1 +1,1 @@
-# TDEE_Calculator
+This App is A TDEE calculator which allows you to learn your Total Daily Energy Expenditure, a measure of how many calories you burn per day. The user can access the functionality of the app via Google Login. Additionaly the users TDEE statistics will be stored in a local personalised log. 

@@ -5,10 +5,10 @@ This App is A TDEE calculator which allows you to learn your Total Daily Energy 
 
  
 <p float="left">
-  <img src="https://github.com/DenzelGuma/TDEE-Calculator-App/blob/master/Tdee%20App%20Images/LoginPage.png" width="150">
-  <img src="https://github.com/DenzelGuma/TDEE-Calculator-App/blob/master/Tdee%20App%20Images/GoogleAuthentication.png" width="150">
-  <img src="https://github.com/DenzelGuma/TDEE-Calculator-App/blob/master/Tdee%20App%20Images/MainAppPage.png" width="150">
-  <img src="https://github.com/DenzelGuma/TDEE-Calculator-App/blob/master/Tdee%20App%20Images/InvalidDataToLogWarning.png" width="150">
-  <img src="https://github.com/DenzelGuma/TDEE-Calculator-App/blob/master/Tdee%20App%20Images/InputtingNewData.png" width="150">
-  <img src="https://github.com/DenzelGuma/TDEE-Calculator-App/blob/master/Tdee%20App%20Images/ResultOfNewDataInput.png" width="150">
+  <img src="https://github.com/DenzelGuma/TDEE-Calculator-App/blob/master/Tdee%20App%20Images/LoginPage.png" width="300">
+  <img src="https://github.com/DenzelGuma/TDEE-Calculator-App/blob/master/Tdee%20App%20Images/GoogleAuthentication.png" width="300">
+  <img src="https://github.com/DenzelGuma/TDEE-Calculator-App/blob/master/Tdee%20App%20Images/MainAppPage.png" width="300">
+  <img src="https://github.com/DenzelGuma/TDEE-Calculator-App/blob/master/Tdee%20App%20Images/InvalidDataToLogWarning.png" width="300">
+  <img src="https://github.com/DenzelGuma/TDEE-Calculator-App/blob/master/Tdee%20App%20Images/InputtingNewData.png" width="300">
+  <img src="https://github.com/DenzelGuma/TDEE-Calculator-App/blob/master/Tdee%20App%20Images/ResultOfNewDataInput.png" width="300">
 </p>

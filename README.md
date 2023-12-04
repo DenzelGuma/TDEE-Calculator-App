@@ -12,3 +12,4 @@ This App is A TDEE calculator which allows you to learn your Total Daily Energy 
   <img src="https://github.com/DenzelGuma/TDEE-Calculator-App/blob/master/Tdee%20App%20Images/InputtingNewData.png" width="300">
   <img src="https://github.com/DenzelGuma/TDEE-Calculator-App/blob/master/Tdee%20App%20Images/ResultOfNewDataInput.png" width="300">
 </p>
+ 
